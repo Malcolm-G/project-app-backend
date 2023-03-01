@@ -1,4 +1,4 @@
-class TodoController < AppController
+class ProjectController < AppController
 
     set :views, './app/views'
 
@@ -7,40 +7,46 @@ class TodoController < AppController
         "Our very first controller"
     end
 
-    # @method: Add a new TO-DO to the DB
-    post '/todos/create' do
+    # @method: Add a new project to the DB
+    post '/projects/create' do
+        data = JSON.parse(request.body.read)
         begin
-            todo = Todo.create( self.data(create: true) )
-            json_response(code: 201, data: todo)
+            project = Project.create(data)
+            json_response(code: 201, data: project)
         rescue => e
-            json_response(code: 422, data: { error: e.message })
+            {error: e.message}.to_json
         end
+        # json_response(code: 201, data: project)
+        # rescue => e
+        #     json_response(code: 422, data: { error: e.message })
     end
 
     # @method: Display all todos
-    get '/todos' do
-        todos = Todo.all
-        json_response(data: todos)
+    get '/projects' do
+        projects = Project.all
+        json_response(data: projects)
     end
 
     # @view: Renders an erb file which shows all TODOs
     # erb has content_type because we want to override the default set above
     get '/' do
-        @todos = Todo.all.map { |todo|
+        @projects = Project.all.map { |project|
           {
-            todo: todo,
-            badge: todo_status_badge(todo.status)
+            project: project,
+            badge: project_status_badge(project.status)
           }
         }
         @i = 1
-        erb_response :todos
+        erb_response :projects
     end
 
     # @method: Update existing TO-DO according to :id
-    put '/todos/update/:id' do
+    put '/projects/update/:id' do
         begin
-            todo = Todo.find(self.todo_id)
-            todo.update(self.data)
+            project = Project.find(self.project_id)
+            project.update(self.data)
+            # project.to_json
+
             json_response(data: { message: "todo updated successfully" })
         rescue => e
             json_response(code: 422 ,data: { error: e.message })
@@ -48,11 +54,11 @@ class TodoController < AppController
     end
 
     # @method: Delete TO-DO based on :id
-    delete '/todos/destroy/:id' do
+    delete '/projects/destroy/:id' do
         begin
-            todo = Todo.find(self.todo_id)
-            todo.destroy
-            json_response(data: { message: "todo deleted successfully" })
+            project = Project.find(self.project_id)
+            project.destroy
+            json_response(data: { message: "project deleted successfully" })
         rescue => e
           json_response(code: 422, data: { error: e.message })
         end
@@ -64,19 +70,19 @@ class TodoController < AppController
     # @helper: format body data
     def data(create: false)
         payload = JSON.parse(request.body.read)
-        if create
-            payload["createdAt"] = Time.now
-        end
+        # if create
+        #     payload["createdAt"] = Time.now
+        # end
         payload
     end
 
     # @helper: retrieve to-do :id
-    def todo_id
+    def project_id
         params['id'].to_i
     end
 
     # @helper: format status style
-    def todo_status_badge(status)
+    def project_status_badge(status)
         case status
             when 'CREATED'
                 'bg-info'
