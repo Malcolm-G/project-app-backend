@@ -14,7 +14,7 @@ end
         title: Faker::Commerce.product_name,
         project_owner_id: rand(1..6),
         description: Faker::Quote.famous_last_words,
-        status: rand(1..4),
+        status: rand(0..3),
         due: Faker::Date.forward(days: 100)
     )
     randomized_users = (1..6).to_a.shuffle
