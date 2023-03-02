@@ -1,5 +1,10 @@
 class JobController < AppController
 
+    get '/jobs' do
+        jobs = Job.all
+        json_response(data: jobs)
+    end
+    
     post '/jobs/create' do
         data = JSON.parse(request.body.read)
         begin
@@ -11,11 +16,6 @@ class JobController < AppController
         # json_response(code: 201, data: project)
         # rescue => e
         #     json_response(code: 422, data: { error: e.message })
-    end
-
-    get '/jobs' do
-        jobs = Job.all
-        json_response(data: jobs)
     end
 
     delete '/jobs/destroy/:id' do
