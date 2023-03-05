@@ -14,8 +14,14 @@ class UserController < AppController
   #@method: create a new user
   post '/auth/register' do
     begin
-      x = User.create(@user)
-      json_response(code: 201, data: x)
+      if User.find_by(username:@user['username'])
+        json_response(code: 422, data: { message: "The Username is aready taken" })
+      elsif User.find_by(email:@user['email'])
+        json_response(code: 422, data: { message: "The email already exists, try logging in if it is yours" })
+      else
+        x = User.create(@user)
+        json_response(code: 201, data: x)
+      end
     rescue => e
       error_response(422, e)
     end
@@ -28,13 +34,17 @@ class UserController < AppController
       if user_data.password == @user['password']
         json_response(code: 200, data: {
           id: user_data.id,
-          email: user_data.email
+          name:user_data.name,
+          email: user_data.email,
+          username: user_data.username
         })
+        # json_response(code: 200, data:user_data)
       else
         json_response(code: 422, data: { message: "Your email/password combination is not correct" })
       end
     rescue => e
-      error_response(422, e)
+      # error_response(422, e)
+      json_response(code: 422, data: { message: "The email does not exist. Please Register" })
     end
   end
 
