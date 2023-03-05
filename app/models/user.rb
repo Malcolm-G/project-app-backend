@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :jobs
   has_many :projects, through: :jobs
+  has_many :own_projects, class_name: 'Project', foreign_key: 'project_owner_id'
 
   # table consists of password_hash as a column to store password hashes in DB
   include BCrypt
