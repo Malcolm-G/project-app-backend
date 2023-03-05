@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_130941) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_05_072625) do
   create_table "jobs", force: :cascade do |t|
     t.integer "user_id"
     t.integer "project_id"
@@ -30,7 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_130941) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_hash", null: false
+    t.string "username", null: false
     t.index ["email"], name: "uk_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "projects", "users", column: "project_owner_id"

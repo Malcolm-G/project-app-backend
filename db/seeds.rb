@@ -1,11 +1,19 @@
 # Add a console message so we can see output when the seed file runs
 puts "Seeding tables..."
 
+user = User.create(
+    name: 'Malcolm',
+    email: 'malcolm@gmail',
+    password: '123',
+    username: 'MGX'
+)
+
 6.times do
     user = User.create(
         name: Faker::Name.name,
         email: Faker::Internet.email,
-        password: Faker::Internet.password
+        password: Faker::Internet.password,
+        username: Faker::Internet.username
     )
 end
 
