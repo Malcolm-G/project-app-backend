@@ -15,7 +15,20 @@ class ProjectController < AppController
 
         get '/projects/:userid' do
             user_id = params['userid'].to_i
-            User.find(user_id).projects.to_json
+            my_projects = User.find(user_id).own_projects
+            projects_part_of = User.find(user_id).projects
+            # user_projects={my_projects:my_projects,projects_part_of:projects_part_of}
+            user_projects = my_projects.concat(projects_part_of)
+            user_projects.to_json
+        end
+
+        get '/project/:id/members' do
+            project_id = params['id'].to_i
+            members = Project.find(project_id).users
+            member_info = members.map do |member|
+                {id: member.id,name:member.name,username:member.username}
+            end
+            member_info.to_json
         end
     
         # @view: Renders an erb file which shows all PROJECTS
@@ -52,7 +65,7 @@ class ProjectController < AppController
             project.update(self.data)
             # project.to_json
 
-            json_response(data: { message: "todo updated successfully" })
+            json_response(data: { message: "project updated successfully" })
         rescue => e
             json_response(code: 422 ,data: { error: e.message })
         end
