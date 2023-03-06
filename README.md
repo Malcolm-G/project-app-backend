@@ -1,14 +1,14 @@
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://gitHub.com/otsembo/my-todos-sinatra/graphs/commit-activity)
-[![GitHub forks](https://img.shields.io/github/forks/otsembo/my-todos-sinatra.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/otsembo/my-todos-sinatra/network/)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/otsembo/my-todos-sinatra/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Malcolm-G/project-app-backend/graphs/commit-activity)
+[![GitHub forks](https://img.shields.io/github/forks/otsembo/my-todos-sinatra.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/Malcolm-G/project-app-backend/network)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Malcolm-G/project-app-backend/blob/main/Licence)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-# My-Todos
-My-Todos is a basic API built with ruby's Sinatra DSL. 
+# Project-App
+Project-App is a web application built with react and using Sinatraas the backend API.
 
-This project is a demo that shows the power of the DSL in building server-side applications quickly.
+This repository contains the backend built with ruby's Sinatra DSL.
 
 The application has been built with the MVC design pattern.
 
@@ -44,7 +44,7 @@ You can setup this repository by following this manual
 
 1. Clone the repository
     ```{shell}
-   git clone https://github.com/otsembo/my-todos-sinatra.git
+   git clone https://github.com/Malcolm-G/project-app-backend.git
    ```
 2. Ensure the ruby gems are setup in your machine
     ```{shell}
@@ -121,7 +121,7 @@ Database schema definitions.
     "password": "12345678"
    }
    ```
-4. `/todos/create` - Add a new TODO item.
+4. `/projects/create` - Add a new Project item.
 
    ```{json}
    ## REQUEST BODY
@@ -131,7 +131,7 @@ Database schema definitions.
     "due": "2023-09-09"
    }
    ```
-5. `/todos` - List all TODO items.
+5. `/projects` - List all Project items.
 
    ```{json}
    ## RESPONSE SAMPLE
@@ -148,17 +148,17 @@ Database schema definitions.
     "message": "SUCCESS"
    }
    ```
-6. `/todos/update/:id` - Update an existing TODO.
-7. `/todos/delete/:id` - Delete a TODO item.
+6. `/projects/update/:id` - Update an existing TODO.
+7. `/projects/delete/:id` - Delete a TODO item.
 8. `/` - Render a table of all todos using Bootstrap and ERB
 
-![Todo Table](screens/todo_table.png)
+<!-- ![Todo Table](screens/todo_table.png) -->
 
 ## LICENSE
-This repository is distributed under the MIT License
+This repository is distributed under the GNU GENERAL PUBLIC LICENSE v3
 
 ```markdown
-Copyright 2023 Ian Okumu
+Copyright 2023 Malcolm Githuka
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), 
 to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
@@ -173,4 +173,4 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 ## Author
 This repository is maintained by:
 
-- [Ian Okumu](https://github.com/otsembo) 
+- [Malcolm Githuka](https://github.com/Malcolm-G-Moringa)
