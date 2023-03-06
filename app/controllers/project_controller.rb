@@ -18,7 +18,7 @@ class ProjectController < AppController
             my_projects = User.find(user_id).own_projects
             projects_part_of = User.find(user_id).projects
             # user_projects={my_projects:my_projects,projects_part_of:projects_part_of}
-            user_projects = my_projects.concat(projects_part_of)
+            user_projects = {my_projects:my_projects, part_of:projects_part_of}
             user_projects.to_json
         end
 
