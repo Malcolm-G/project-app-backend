@@ -68,25 +68,25 @@ This application is a simple web API that allows users to:
 
 - Register a new account.
 - Log in to existing account.
-- Create TODO items.
-- Update individual TODO items.
-- View all TODO items.
-- Filter TODO items by date.
-- Delete a TODO item.
+- Create Projects
+- Update individual Projects
+- View all Projects
+- Delete a Project
 
 ### MODELS
 Database schema definitions.
 
-#### TODO
+#### Projects
 
 | COLUMN      | DATA TYPE                                       | DESCRIPTION                         | 
 |-------------|-------------------------------------------------|-------------------------------------|
 | id          | Integer                                         | Unique identifier.                  |
-| title       | String                                          | The name of the task.               |
+| title       | String                                          | The name of the project.            |
 | description | String                                          | A short description about the task. |
 | due         | Date                                            | The set due date for the task.      |
-| createdAt   | Date                                            | The date the task was created.      |
-| status      | ENUM `[CREATED, ONGOING, COMPLETED, CANCELLED]` | TThe status of the task.            |
+| created_at  | DateTime                                        | The date the task was created.      |
+| updated_at  | DateTime                                        | The date the project was updated    |
+| status      | ENUM `[CREATED, ONGOING, COMPLETED, CANCELLED]` | The status of the project           |
 
 
 #### USER
@@ -95,8 +95,8 @@ Database schema definitions.
 | id            | Integer   | Unique identifier.                    |
 | full_name     | String    | User's full name.                     |
 | password_hash | String    | User's password hashed with `BCrypt`. |
-| updated_at    | Date      | The date the user was updated.        |
-| createdAt     | Date      | The date the user was created.        |
+| email         | string    | User's email                          |
+| username      | string    | User's username                       |
 
 
 ### ROUTES
@@ -109,6 +109,7 @@ Database schema definitions.
    {
     "full_name": "John Doe",
     "email": "mail@mail.com",
+    "username": "Malstrom",
     "password": "12345678"
    }
    ```
