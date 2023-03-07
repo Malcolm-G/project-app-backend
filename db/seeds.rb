@@ -50,7 +50,7 @@ user6 = User.create(
 
 5.times do |i|
     project = Project.create(
-        title: Faker::Commerce.product_name,
+        title: Faker::Company.bs,
         project_owner_id: rand(1..6),
         description: Faker::Quote.famous_last_words,
         status: rand(0..3),
