@@ -72,6 +72,10 @@ This application is a simple web API that allows users to:
 - Update individual Projects
 - View all Projects
 - Delete a Project
+  
+### Below isan ERD diagram of the database.
+
+![ERD Diagram](images/project-app-ERD.png)
 
 ### MODELS
 Database schema definitions.
@@ -149,9 +153,9 @@ Database schema definitions.
     "message": "SUCCESS"
    }
    ```
-6. `/projects/update/:id` - Update an existing TODO.
-7. `/projects/delete/:id` - Delete a TODO item.
-8. `/` - Render a table of all todos using Bootstrap and ERB
+6. `/projects/update/:id` - Update an existing Project.
+7. `/projects/delete/:id` - Delete a Project item.
+8. `/` - Render a table of all projects using Bootstrap and ERB
 
 <!-- ![Todo Table](screens/todo_table.png) -->
 
