@@ -178,4 +178,4 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 ## Author
 This repository is maintained by:
 
-- [Malcolm Githuka](https://github.com/Malcolm-G-Moringa)
+- [Malcolm Githuka](https://github.com/Malcolm-G)
